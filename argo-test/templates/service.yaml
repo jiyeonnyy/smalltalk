@@ -6,6 +6,7 @@ metadata:
   labels:
     helm.sh/chart: smalltalk-test-0.1
     app.kabang.io/name: smalltalk
+    app.kubernetes.io/instance: test
 spec:
   type: ClusterIP
   ports:
@@ -15,5 +16,5 @@ spec:
       name: http
 
   selector:
-    app.kabang.io/name: mci-runtime
-    app.kabang.io/instance: mci-runtime
+    app.kabang.io/name: smalltalk-test
+    app.kabang.io/instance: smalltalk-test

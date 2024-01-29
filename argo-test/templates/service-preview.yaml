@@ -6,6 +6,7 @@ metadata:
   labels:
     helm.sh/chart: smalltalk-test-0.1
     app.kabang.io/name: smalltalk
+    app.kubernetes.io/instance: test
 spec:
   type: ClusterIP
   ports:
