@@ -21,11 +21,6 @@ spec:
       app.kabang.io/name:  smalltalk-test
   template:
     metadata:
-      annotations:
-        fluentbit.io/parser: json
-        prometheus.io/path: /actuator/prometheus
-        prometheus.io/port: "8080"
-        prometheus.io/scrape: "true"
       labels:
         app.kabang.io/name: smalltalk
         app.kubernetes.io/instance: test
