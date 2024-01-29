@@ -4,9 +4,9 @@ metadata:
   name: smalltalk-test
   namespace: argocd
   labels:
-    helm.sh/chart: smalltalk-test-0.1
     app.kabang.io/name: smalltalk
     app.kubernetes.io/instance: test
+    helm.sh/chart: smalltalk-test-0.1
   annotations:
     kubernetes.io/ingress.class: alb  
 spec:

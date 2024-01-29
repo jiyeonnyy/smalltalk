@@ -3,9 +3,9 @@ entries:
   argo-test:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-29T17:09:59.9831669+09:00"
+    created: "2024-01-29T17:20:21.8372963+09:00"
     description: A Helm chart for Kubernetes
-    digest: 105de7285aa0ed0abc2a06050450014b748f8e9f0a941b84a7c78cfaa7cdb49b
+    digest: 4a20f5acc8daea36dc2803729a0fb98d89e68b143477de3a17a272bd57405838
     name: argo-test
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: "0.2"
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-29T17:09:59.9820932+09:00"
+    created: "2024-01-29T17:20:21.8362238+09:00"
     description: A Helm chart for Kubernetes
     digest: 9691da7d57936667b280e32b4ae1ad2fc0dd45db0236ba332dc8f7a49049f9e3
     name: argo-test
@@ -21,4 +21,4 @@ entries:
     urls:
     - argo-test-0.1.tgz
     version: "0.1"
-generated: "2024-01-29T17:09:59.980479+09:00"
+generated: "2024-01-29T17:20:21.8353239+09:00"
