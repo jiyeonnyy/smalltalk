@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: smalltalk-test
+  namespace: argocd
+  labels:
+    helm.sh/chart: smalltalk-test-0.1
+    app.kabang.io/name: smalltalk
+  annotations:
+    kubernetes.io/ingress.class: alb  
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match:
+        Host(`k8s-argocd-argocdin-b4f18b4808-1855751487.ap-northeast-2.elb.amazonaws.com/smalltalk`)
+      kind: Rule
+      services:
+        - name: smalltalk-test
+          port: 8080

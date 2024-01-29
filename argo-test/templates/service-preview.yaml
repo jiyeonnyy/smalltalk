@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: smalltalk-test-preview
+  namespace: argocd
+  labels:
+    helm.sh/chart: smalltalk-test-0.1
+    app.kabang.io/name: smalltalk
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+  selector:
+    app.kabang.io/name: smalltalk-test-preview
+    app.kabang.io/instance: smalltalk-test-preview

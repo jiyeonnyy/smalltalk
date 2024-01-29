@@ -1,0 +1,75 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: smalltalk-test
+  namespace: argocd
+  labels:
+    helm.sh/chart: smalltalk-test-0.1
+    app.kabang.io/name: smalltalk
+spec:
+  strategy:
+    blueGreen:
+      activeService: smalltalk-test
+      previewService: smalltalk-test-preview
+      scaleDownDelaySeconds: 604800
+      autoPromotionEnabled: false
+      autoPromotionSeconds: 10000
+  selector:
+    matchLabels:
+      app.kabang.io/name: smalltalk-test
+      app.kabang.io/instance: smalltalk-test
+  template:
+    metadata:
+      annotations:
+      fluentbit.io/parser: json
+      prometheus.io/path: /actuator/prometheus
+      prometheus.io/port: "8080"
+      prometheus.io/scrape: "true"
+    labels:
+      helm.sh/chart: smalltalk-test-0.1
+      app.kabang.io/name: smalltalk 
+  spec: 
+    securityContext:
+      {}
+    terminationGracePeriodSeconds: 30
+    containers:
+      - name: smalltalk-test
+        image: "tomcat:jdk17-temurin-jammy"
+
+        imagePullPolicy: IfNotPresent
+        env: 
+          - name: APPLICATION_NAME
+            value: "smalltalk-test" 
+        ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 40
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 40
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: "2"
+            memory: 4Gi
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - /bin/sleep
+              - "2"

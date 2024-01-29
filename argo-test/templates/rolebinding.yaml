@@ -1,0 +1,13 @@
+# Source: card-gateway-runtime/charts/kabang-webservice/templates/rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: smalltalk-test
+  namespace: argocd
+  labels:
+    helm.sh/chart: smalltalk-test-0.1
+    app.kabang.io/name: smalltalk
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: smalltalk-test
